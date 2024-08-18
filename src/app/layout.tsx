@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import ThirdwebProviderV4 from "./providers/ThirdwebProviderV4";
+import ThirdwebProviderV5 from "./providers/ThirdwebProviderV5";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ThirdwebProviderV4>
+        <ThirdwebProviderV5>
+          <body className={inter.className}>{children}</body>
+        </ThirdwebProviderV5>
+      </ThirdwebProviderV4>
     </html>
   );
 }
